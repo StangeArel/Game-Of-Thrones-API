@@ -13,6 +13,7 @@ async function fetchGOTCharactersList() {
     const data = responseJson.slice(gameOTOffset, gameOTOffset + gameOTApiLimit);
     gameOTDataList = [];
     await fetchGOTCharactersDetails(data);
+    renderGOTCharacters();
 }
 
 async function fetchGOTCharactersDetails(characterList) {
@@ -23,5 +24,15 @@ async function fetchGOTCharactersDetails(characterList) {
             role: oneCharacter.title,
             imgUrl: oneCharacter.imageUrl
         });
+    }
+}
+
+function renderGOTCharacters() {
+    let gotListRef = gameOTList;
+    gotListRef.innerHTML = "";
+    for (let i = 0; i < gameOTDataList.length; i++) {
+        const oneCharacter = gameOTDataList[i];
+        let template = generateTemplatesForRenderGOT(oneCharacter);
+        gotListRef.innerHTML += template;
     }
 }
