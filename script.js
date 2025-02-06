@@ -14,3 +14,14 @@ async function fetchGOTCharactersList() {
     gameOTDataList = [];
     await fetchGOTCharactersDetails(data);
 }
+
+async function fetchGOTCharactersDetails(characterList) {
+    for (let i = 0; i < characterList.length; i++) {
+        let oneCharacter = characterList[i];
+        gameOTDataList.push({
+            name: oneCharacter.fullName,
+            role: oneCharacter.title,
+            imgUrl: oneCharacter.imageUrl
+        });
+    }
+}
