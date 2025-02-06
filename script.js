@@ -36,3 +36,15 @@ function renderGOTCharacters() {
         gotListRef.innerHTML += template;
     }
 }
+
+function generateTemplatesForRenderGOT(character) {
+    return `
+        <div class="informationFromAPI">
+            <p class="nameGOT"><strong>Name:</strong> ${character.name}</p>
+            <p class="role"><strong>Rolle:</strong> ${character.role}</p>
+            <img src="${character.imgUrl}" alt="${character.name}" width="100">
+        </div>
+    `;
+}
+
+fetchGOTCharactersList(); 
